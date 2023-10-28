@@ -6,7 +6,7 @@ interface LayoutProps {
   title:string
 }
 
-export const Layout:FC<LayoutProps> = ({children, title}) => {
+export const Layouts:FC<LayoutProps> = ({children, title}) => {
   return (
     <>
       <Head>
@@ -18,7 +18,7 @@ export const Layout:FC<LayoutProps> = ({children, title}) => {
 
       <Navbar/>
 
-      <main>
+      <main className="w-11/12 pt-5 m-auto">
         {children}
       </main>
     

@@ -1,6 +1,7 @@
 import React from 'react'
 import {useTheme} from "next-themes";
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 export const Navbar = () => {
@@ -27,11 +28,15 @@ export const Navbar = () => {
         width={70}
         height={70}
       />
-        <h2 className='text-3xl font-bold'>P</h2>
-        <h3 color='withe'>okemon</h3>
+      <Link href='/' passHref className='flex justify-center items-center'>
+          <h2 className='text-3xl font-bold'>P</h2>
+          <h3 color='withe'>okemon</h3>
+      </Link>
 
         <div style={spacerStyle} />
-        <p>favoritos</p>
+        <Link href='/favoritos' passHref>
+          <p>favoritos</p>
+        </Link>
     </div>
   )
 }
