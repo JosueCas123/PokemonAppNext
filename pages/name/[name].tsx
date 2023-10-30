@@ -2,7 +2,7 @@ import { useRef, useState, FC } from 'react';
 import { Layouts } from "@/components/layout"
 import { Button, Card, CardBody, CardHeader, Image } from '@nextui-org/react'
 import confetti from "canvas-confetti";
-import { localFavorites } from '@/utils';
+import { getPokemonInfo, localFavorites } from '@/utils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { PokemonListResponse } from '@/interfaces';
 import { pokeApi } from '@/api';
@@ -126,11 +126,11 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
     //una vez que se ejecuta el getStaticPats pasara getStaticProps
     //desectruramos lo que viene en ctx.params
     const {name} = ctx.params as {name:string}
-    const {data} = await pokeApi.get<Pokemon>(`/pokemon/${name}`)
+    getPokemonInfo(name)
     
     return {
       props: {
-        pokemon:data
+        pokemon: await getPokemonInfo(name)
       }
     }
   }

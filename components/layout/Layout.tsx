@@ -6,6 +6,8 @@ interface LayoutProps {
   title:string
 }
 
+const oringin = (typeof window === 'undefined') ? '' : window.location.origin;
+
 export const Layouts:FC<LayoutProps> = ({children, title}) => {
   return (
     <>
@@ -14,6 +16,10 @@ export const Layouts:FC<LayoutProps> = ({children, title}) => {
         <meta name="author" content="Josue Castillo" />
         <meta name="description" content="informacion del polemon XXX" />
         <meta name="keywords" content="pokemon, pokedex, pokedex, pokedex" />
+
+        <meta property="og:title" content={`Infomacion sobre: ${title}`}/>
+        <meta property="og:description" content={`Esta es la pagina sobre ${title}`} />
+        <meta property="og:image" content={`${oringin}/img/banner.png`} />
       </Head>
 
       <Navbar/>

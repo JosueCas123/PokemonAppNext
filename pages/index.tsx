@@ -4,6 +4,7 @@ import { PokemonListResponse, SmallPokemon } from "@/interfaces";
 import { Layouts } from "@/components/layout";
 import { pokeApi } from "@/api";
 import { PokemonCard } from "@/components/pokemon";
+import Image from "next/image";
 
 
 
@@ -18,6 +19,7 @@ const Home: NextPage<Props> = ({ pokemons }) => {
   return (
     <>
       <Layouts title="Listado de Pokemon">
+       
         <ul className="grid 2xl:grid-cols-6 lx:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-10">
           {pokemons.map((poke) => (
               <PokemonCard key={poke.id} pokemon={poke} />

@@ -8,7 +8,7 @@ import { Pokemon } from '@/interfaces/pokemon-full'
 import { Button, Card, CardBody, CardHeader, Image } from '@nextui-org/react'
 
 import confetti from 'canvas-confetti';
-import { localFavorites } from '@/utils';
+import { getPokemonInfo, localFavorites } from '@/utils';
 interface Props {
   pokemon:Pokemon
 }
@@ -132,11 +132,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   //una vez que se ejecuta el getStaticPats pasara getStaticProps
   //desectruramos lo que viene en ctx.params
   const {id} = ctx.params as {id:string}
-  const {data} = await pokeApi.get<Pokemon>(`/pokemon/${id}`)
-  
+
   return {
     props: {
-      pokemon:data
+      pokemon:await getPokemonInfo(id)
     }
   }
 }
